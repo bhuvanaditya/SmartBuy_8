@@ -4,8 +4,9 @@ import { useCart } from '../contexts/CartContext';
 import './Deals.scss';
 
 const DealsOffers = [
+  // Electronics Deals
   {
-    id: 301,
+    id: "samsung-4k-qled-tv",
     name: "Samsung 55\" 4K QLED Smart TV",
     category: "Electronics",
     originalPrice: 799.99,
@@ -13,10 +14,10 @@ const DealsOffers = [
     discountPercent: 25,
     image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
     expiresIn: "3 days",
-    link: "/product/101"
+    path: "samsung-55-4k-qled-smart-tv"
   },
   {
-    id: 302,
+    id: "macbook-air-m2",
     name: "Apple MacBook Air 13\" M2",
     category: "Electronics",
     originalPrice: 1199.99,
@@ -24,51 +25,88 @@ const DealsOffers = [
     discountPercent: 25,
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
     expiresIn: "5 days",
-    link: "/product/102"
+    path: "apple-macbook-air-13-m2"
   },
   {
-    id: 303,
+    id: "sony-noise-cancelling-headphones",
+    name: "Sony WH-1000XM5 Noise Cancelling Headphones",
+    category: "Electronics",
+    originalPrice: 349.99,
+    discountedPrice: 279.99,
+    discountPercent: 20,
+    image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    expiresIn: "7 days",
+    path: "sony-wh-1000xm5-headphones"
+  },
+  
+  // Clothing Deals
+  {
+    id: "mens-crew-neck-tshirt",
     name: "Men's Classic Fit Crew Neck T-Shirt",
     category: "Clothing",
-    originalPrice: 24.99,
-    discountedPrice: 12.99,
-    discountPercent: 48,
-    image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    originalPrice: 29.99,
+    discountedPrice: 19.99,
+    discountPercent: 33,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
     expiresIn: "2 days",
-    link: "/product/201"
+    path: "mens-classic-fit-crew-neck-tshirt"
   },
   {
-    id: 304,
-    name: "Women's Stretch Slim Jeans",
+    id: "womens-slim-jeans",
+    name: "Women's Slim Fit Distressed Jeans",
     category: "Clothing",
-    originalPrice: 59.99,
-    discountedPrice: 39.99,
-    discountPercent: 33,
+    originalPrice: 79.99,
+    discountedPrice: 59.99,
+    discountPercent: 25,
     image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
     expiresIn: "4 days",
-    link: "/product/202"
+    path: "womens-slim-fit-distressed-jeans"
   },
   {
-    id: 305,
-    name: "Purina Pro Plan Sensitive Skin & Stomach Dog Food",
+    id: "designer-denim-jacket",
+    name: "Designer Denim Jacket",
+    category: "Clothing",
+    originalPrice: 129.99,
+    discountedPrice: 89.99,
+    discountPercent: 31,
+    image: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    expiresIn: "6 days",
+    path: "designer-denim-jacket"
+  },
+  
+  // Pet Supplies Deals
+  {
+    id: "premium-dog-food",
+    name: "Premium Organic Dog Food",
     category: "Pet Supplies",
-    originalPrice: 89.99,
-    discountedPrice: 69.99,
-    discountPercent: 22,
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5339575?$sclp-prd-main_large$",
-    expiresIn: "7 days",
-    link: "/product/1"
+    originalPrice: 69.99,
+    discountedPrice: 54.99,
+    discountPercent: 21,
+    image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    expiresIn: "3 days",
+    path: "premium-organic-dog-food"
   },
   {
-    id: 306,
-    name: "Hill's Science Diet Sensitive Stomach Dog Food",
+    id: "cat-tree-with-posts",
+    name: "Deluxe Cat Tree with Scratching Posts",
     category: "Pet Supplies",
-    originalPrice: 83.99,
-    discountedPrice: 64.99,
-    discountPercent: 23,
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5154856?$sclp-prd-main_large$",
+    originalPrice: 129.99,
+    discountedPrice: 89.99,
+    discountPercent: 31,
+    image: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    expiresIn: "5 days",
+    path: "deluxe-cat-tree-with-scratching-posts"
+  },
+  {
+    id: "dog-grooming-kit",
+    name: "Complete Dog Grooming Kit",
+    category: "Pet Supplies",
+    originalPrice: 79.99,
+    discountedPrice: 59.99,
+    discountPercent: 25,
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
     expiresIn: "7 days",
-    link: "/product/2"
+    path: "complete-dog-grooming-kit"
   }
 ];
 
@@ -77,19 +115,19 @@ const DealsCategories = [
     title: "Electronics Deals",
     image: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     discount: "Up to 40% OFF",
-    link: "/electronics"
+    route: "/electronics"
   },
   {
     title: "Clothing Deals",
     image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     discount: "Up to 50% OFF",
-    link: "/clothing"
+    route: "/clothing"
   },
   {
     title: "Pet Supplies Deals",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS1_NewPet_DT",
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     discount: "Buy 1 Get 1 50% OFF",
-    link: "/dog"
+    route: "/pet-supplies"
   }
 ];
 
@@ -98,7 +136,7 @@ const Deals = () => {
   const { addToCart } = useCart();
 
   const handleProductClick = (deal: any) => {
-    navigate(deal.link, {
+    navigate(`/product/${deal.path}`, {
       state: {
         product: {
           id: deal.id,
@@ -108,8 +146,19 @@ const Deals = () => {
           image: deal.image,
           category: deal.category
         },
-        category: deal.category.toLowerCase()
+        category: deal.category.toLowerCase().replace(/\s+/g, '-')
       }
+    });
+  };
+
+  const handleAddToCart = (e: React.MouseEvent, deal: any) => {
+    e.stopPropagation();
+    addToCart({
+      id: deal.id,
+      name: deal.name,
+      price: deal.discountedPrice,
+      image: deal.image,
+      quantity: 1
     });
   };
 
@@ -136,7 +185,7 @@ const Deals = () => {
               <div 
                 key={index} 
                 className="category-card"
-                onClick={() => navigate(category.link)}
+                onClick={() => navigate(category.route)}
               >
                 <div className="discount-label">{category.discount}</div>
                 <img src={category.image} alt={category.title} />
@@ -183,16 +232,7 @@ const Deals = () => {
                     </button>
                     <button 
                       className="add-to-cart"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        addToCart({
-                          id: deal.id.toString(),
-                          name: deal.name,
-                          price: deal.discountedPrice,
-                          image: deal.image,
-                          quantity: 1
-                        });
-                      }}
+                      onClick={(e) => handleAddToCart(e, deal)}
                     >
                       <i className="bi bi-cart-plus"></i>
                     </button>

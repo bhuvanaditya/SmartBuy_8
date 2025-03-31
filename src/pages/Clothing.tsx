@@ -408,7 +408,7 @@ const Clothing = () => {
             </button>
           </div>
           <div className="deals-image">
-            <img src="https://images.unsplash.com/photo-1601924582970-9238bcb495d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="New Collection" />
+            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/copy-of-new-spring-collection-vertical-video-design-template-d742df95811b40ca4e4c2b51f3302f03_screen.jpg?ts=1637004365" alt="New Collection" />
           </div>
         </div>
       </div>

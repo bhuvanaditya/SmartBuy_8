@@ -27,7 +27,7 @@ import ProductDetail from "./pages/ProductDetail";
 import PersonalizedProductDetail from './pages/PersonalizedProductDetail';
 import InStore from "./pages/InStore";
 import MyControlTray from "./components/control-tray/ControlTray";
-import PetProducts from "./pages/PetProducts";
+
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
@@ -57,7 +57,7 @@ function App() {
                 <Route path="/all" element={<All />} />
                 <Route path="/electronics" element={<Electronics />} />
                 <Route path="/clothing" element={<Clothing />} />
-                <Route path="/petProducts" element={<PetProducts />} />
+              
                 <Route path="/PetSupplies" element={<PetSupplies/>}/>
                 <Route path="/deals" element={<Deals />} />
                 <Route path="/instore" element={<InStore />} />
