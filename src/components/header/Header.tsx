@@ -97,20 +97,13 @@ export const Header = () => {
             </li>
             <li>
               <Link 
-                to="/dog"
-                className={location.pathname === '/dog' ? 'active' : ''}
+                to="/petsupplies"
+                className={location.pathname === '/petsupplies' ? 'active' : ''}
               >
                 Pet Supplies
               </Link>
             </li>
-            <li>
-              <Link 
-                to="/deals"
-                className={location.pathname === '/deals' ? 'active' : ''}
-              >
-                Deals
-              </Link>
-            </li>
+            
             <li>
               <Link 
                 to="/instore"
@@ -125,3 +118,4 @@ export const Header = () => {
     </header>
   );
 };
+export default Header;

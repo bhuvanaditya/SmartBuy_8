@@ -6,7 +6,7 @@
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px; // Increased padding
   }
   
   .top-banner {
@@ -26,12 +26,12 @@
   .header-main {
     display: flex;
     align-items: center;
-    padding: 15px 0;
+    padding: 20px 0; // Increased padding
     background-color: white;
     
     .logo-container {
       flex: 0 0 auto;
-      margin-right: 30px;
+      margin-right: 40px; // Increased margin
       
       .smart-buy-logo {
         display: flex;
@@ -49,7 +49,7 @@
           border-radius: 8px;
           font-weight: 800;
           font-size: 16px;
-          margin-right: 10px;
+          margin-right: 12px;
           box-shadow: 0 2px 8px rgba(0, 70, 190, 0.3);
         }
         
@@ -97,6 +97,7 @@
       flex: 1;
       position: relative;
       max-width: 450px;
+      margin: 0 25px; // Added margin on both sides
       
       input {
         width: 100%;
@@ -142,7 +143,7 @@
     
     .header-actions {
       display: flex;
-      gap: 20px;
+      gap: 30px; // Increased gap between elements
       margin-left: 30px;
       
       .account-menu {
@@ -164,7 +165,7 @@
           border-radius: 8px;
           z-index: 100;
           padding: 10px 0;
-          margin-top: 5px;
+          margin-top: 12px; // Increased margin
           opacity: 0;
           visibility: hidden;
           transform: translateY(10px);
@@ -172,7 +173,7 @@
           
           a, button {
             display: block;
-            padding: 10px 15px;
+            padding: 12px 20px; // Increased padding
             color: #333;
             text-decoration: none;
             border: none;
@@ -198,18 +199,18 @@
         text-decoration: none;
         background: none;
         border: none;
-        padding: 0;
+        padding: 5px 10px; // Added padding
         cursor: pointer;
         position: relative;
         
         i {
-          font-size: 20px;
-          margin-bottom: 4px;
+          font-size: 22px; // Increased icon size
+          margin-bottom: 6px; // Increased margin
           transition: all 0.2s ease;
         }
         
         span {
-          font-size: 12px;
+          font-size: 13px; // Increased font size
           font-weight: 500;
         }
         
@@ -228,18 +229,19 @@
         .cart-count {
           position: absolute;
           top: -8px;
-          right: -8px;
+          right: -5px;
           background: #bb0628;
           color: white;
-          font-size: 10px;
-          width: 18px;
-          height: 18px;
+          font-size: 12px;
+          min-width: 20px;
+          height: 20px;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           font-weight: 600;
           box-shadow: 0 2px 5px rgba(187, 6, 40, 0.3);
+          padding: 0 5px;
         }
       }
     }
@@ -251,7 +253,7 @@
     box-shadow: 0 2px 5px rgba(0, 70, 190, 0.2);
     
     .container {
-      padding: 0;
+      padding: 0 20px; // Added padding
     }
     
     .nav-links {
@@ -267,7 +269,7 @@
           color: white;
           text-decoration: none;
           font-size: 15px;
-          padding: 15px 20px;
+          padding: 18px 25px; // Increased padding
           display: block;
           transition: all 0.2s ease;
           font-weight: 500;
@@ -287,37 +289,33 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .main-header {
+    .main-nav .nav-links li a {
+      padding: 18px 20px; // Adjusted padding for smaller screens
+    }
+  }
+}
+
 @media (max-width: 992px) {
   .main-header {
     .header-main {
       flex-wrap: wrap;
       
       .logo-container {
-        margin-right: 15px;
-        
-        .smart-buy-logo {
-          .logo-icon {
-            width: 35px;
-            height: 35px;
-            font-size: 14px;
-          }
-          
-          .logo-text {
-            font-size: 20px;
-          }
-        }
+        margin-right: 20px;
       }
       
       .search-container {
         order: 3;
         width: 100%;
-        margin-top: 15px;
+        margin: 15px 0 0 0;
         max-width: 100%;
       }
       
       .header-actions {
         margin-left: auto;
-        gap: 15px;
+        gap: 20px; // Reduced gap for medium screens
       }
     }
     
@@ -327,7 +325,7 @@
       -webkit-overflow-scrolling: touch;
       
       li a {
-        padding: 12px 15px;
+        padding: 15px 18px; // Reduced padding for medium screens
       }
     }
   }
@@ -336,6 +334,8 @@
 @media (max-width: 576px) {
   .main-header {
     .header-main {
+      padding: 15px 0;
+      
       .logo-container {
         .smart-buy-logo {
           .logo-text {
@@ -349,16 +349,16 @@
       }
       
       .header-actions {
-        gap: 10px;
+        gap: 15px; // Further reduced gap for small screens
         
         .action-btn span {
-          font-size: 10px;
+          font-size: 11px;
         }
       }
     }
     
     .main-nav .nav-links li a {
-      padding: 12px 10px;
+      padding: 12px 15px;
       font-size: 13px;
     }
   }

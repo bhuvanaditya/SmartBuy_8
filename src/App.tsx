@@ -13,10 +13,10 @@ import { Cart } from './pages/Cart';
 import { OrderPaymentConfirmation } from './pages/OrderPaymentConfirmation';
 import { Profile } from './pages/Profile';
 import All from './pages/All';
-import Dog from './pages/Dog';
 import Electronics from './pages/Electronics';
 import Clothing from './pages/Clothing';
 import Deals from './pages/Deals';
+import PetSupplies from "./pages/PetSupplies";
 import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
 import { ProtectedRoute } from './auth/ProtectedRoute';
 import PersonalizedPage from './pages/PersonalizedPage';
@@ -27,6 +27,7 @@ import ProductDetail from "./pages/ProductDetail";
 import PersonalizedProductDetail from './pages/PersonalizedProductDetail';
 import InStore from "./pages/InStore";
 import MyControlTray from "./components/control-tray/ControlTray";
+import PetProducts from "./pages/PetProducts";
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
@@ -56,7 +57,8 @@ function App() {
                 <Route path="/all" element={<All />} />
                 <Route path="/electronics" element={<Electronics />} />
                 <Route path="/clothing" element={<Clothing />} />
-                <Route path="/dog" element={<Dog />} />
+                <Route path="/petProducts" element={<PetProducts />} />
+                <Route path="/PetSupplies" element={<PetSupplies/>}/>
                 <Route path="/deals" element={<Deals />} />
                 <Route path="/instore" element={<InStore />} />
                 <Route path="/product/:id" element={<ProductDetail />} />

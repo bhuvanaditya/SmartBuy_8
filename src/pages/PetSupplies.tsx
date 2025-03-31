@@ -1,237 +1,237 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
-import './Electronics.scss';
+import './PetSupplies.scss';
 
-const ElectronicsProducts = [
+const PetSuppliesProducts = [
   {
     id: 101,
-    name: "Samsung 55\" 4K QLED Smart TV",
-    category: "TVs",
+    name: "Premium Organic Dog Food",
+    category: "Dog Food",
     reviews: 345,
-    price: 699.99,
-    discountedPrice: 599.99,
-    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Samsung",
-    features: ["4K UHD", "QLED Display", "Smart TV Features", "Voice Control"]
+    price: 69.99,
+    discountedPrice: 59.99,
+    image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "Pawsome Nutrition",
+    features: ["Organic Ingredients", "Grain-Free", "High Protein", "Vet Recommended"]
   },
   {
     id: 102,
-    name: "Apple MacBook Air 13\" M2",
-    category: "Laptops",
+    name: "Deluxe Cat Tree with Scratching Posts",
+    category: "Cat Furniture",
     reviews: 412,
-    price: 999.99,
-    discountedPrice: 899.99,
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Apple",
-    features: ["M2 Chip", "13-inch Retina Display", "16GB RAM", "512GB SSD"]
+    price: 129.99,
+    discountedPrice: 99.99,
+    image: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "FurryComfort",
+    features: ["Multiple Levels", "Built-in Toys", "Plush Cushions", "Sisal Scratching Posts"]
   },
   {
     id: 103,
-    name: "Sony WH-1000XM5 Noise Cancelling Headphones",
-    category: "Audio",
+    name: "Automatic Pet Feeder with Timer",
+    category: "Feeding Supplies",
     reviews: 278,
-    price: 349.99,
-    discountedPrice: 299.99,
-    image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Sony",
-    features: ["Noise Cancellation", "30-hour Battery", "Touch Controls", "Hi-Res Audio"]
+    price: 79.99,
+    discountedPrice: 69.99,
+    image: "https://i.pinimg.com/originals/6e/66/69/6e6669e8b7118363e80ca0ca9802cdd5.jpg",
+    brand: "PetTech",
+    features: ["Programmable Feeding", "Portion Control", "LCD Display", "Voice Recorder"]
   },
   {
     id: 104,
-    name: "Google Nest Smart Home Hub",
-    category: "Smart Home",
+    name: "Cozy Pet Bed with Orthopedic Foam",
+    category: "Bedding",
     reviews: 189,
-    price: 129.99,
-    discountedPrice: 99.99,
-    image: "https://cdn.mos.cms.futurecdn.net/LysibXqbRQTYp2ajPrga54.jpg",
-    brand: "Google",
-    features: ["Voice Assistant", "Smart Home Control", "Video Calling", "Weather Updates"]
+    price: 89.99,
+    discountedPrice: 69.99,
+    image: "https://images.unsplash.com/photo-1541599468348-e96984315921?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "ComfyPets",
+    features: ["Memory Foam", "Washable Cover", "Non-Slip Base", "Water-Resistant"]
   },
   {
     id: 105,
-    name: "Canon EOS R7 Mirrorless Camera",
-    category: "Cameras",
+    name: "Interactive Dog Puzzle Toy Set",
+    category: "Toys",
     reviews: 156,
-    price: 1499.99,
-    discountedPrice: 1299.99,
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Canon",
-    features: ["32.5MP Sensor", "4K Video", "In-body Stabilization", "RF Lens Mount"]
+    price: 39.99,
+    discountedPrice: 29.99,
+    image: "https://www.petharnessleash.com/photo/pl60824644-wooden_dog_puzzle_toys_interactive_toy_customized_color.jpg",
+    brand: "PawPlay",
+    features: ["Mental Stimulation", "Treat Dispensing", "Durable Materials", "Multiple Difficulty Levels"]
   },
   {
     id: 106,
-    name: "Xbox Series X Console",
-    category: "Gaming",
+    name: "Adjustable Dog Harness with Reflective Strips",
+    category: "Collars & Leashes",
     reviews: 302,
-    price: 499.99,
-    discountedPrice: 469.99,
-    image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Microsoft",
-    features: ["4K Gaming", "120 FPS", "1TB SSD", "Ray Tracing"]
+    price: 34.99,
+    discountedPrice: 29.99,
+    image: "https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "SafePaws",
+    features: ["No-Pull Design", "Reflective Trim", "Padded Comfort", "Adjustable Fit"]
   }
 ];
 
-const ElectronicsDeals = [
+const PetDeals = [
   {
     id: 201,
-    name: "Dell XPS 15 Laptop",
-    category: "Laptops",
+    name: "Smart Pet Water Fountain",
+    category: "Feeding Supplies",
     reviews: 245,
-    price: 1799.99,
-    discountedPrice: 1499.99,
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Dell",
-    features: ["Intel i9", "32GB RAM", "1TB SSD", "NVIDIA RTX 3050Ti"]
+    price: 59.99,
+    discountedPrice: 44.99,
+    image: "https://i5.walmartimages.com/asr/ff606bcb-2803-4cf4-8ebe-3b11da9c18cc.31f3d77ab970169c7aaf226f2fe2da4c.jpeg",
+    brand: "PetTech",
+    features: ["Filtered Water", "LED Indicator", "Quiet Operation", "Large Capacity"]
   },
   {
     id: 202,
-    name: "LG C2 65\" OLED TV",
-    category: "TVs",
+    name: "Luxury Pet Carrier Backpack",
+    category: "Travel",
     reviews: 198,
-    price: 2499.99,
-    discountedPrice: 1999.99,
-    image: "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "LG",
-    features: ["4K OLED", "120Hz", "Dolby Vision", "WebOS"]
+    price: 89.99,
+    discountedPrice: 69.99,
+    image: "https://images.unsplash.com/photo-1585071550721-fdb362ae2b8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "TravelPet",
+    features: ["Ventilated Design", "Padded Shoulder Straps", "Multiple Pockets", "Airline Approved"]
   },
   {
     id: 203,
-    name: "Bose QuietComfort Earbuds",
-    category: "Audio",
+    name: "Premium Cat Litter Box with Hood",
+    category: "Litter Boxes",
     reviews: 167,
-    price: 279.99,
-    discountedPrice: 229.99,
-    image: "https://images.unsplash.com/photo-1600086827875-a63b01f1335c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Bose",
-    features: ["Noise Cancelling", "Wireless", "Water Resistant", "Touch Controls"]
+    price: 49.99,
+    discountedPrice: 39.99,
+    image: "https://m.media-amazon.com/images/I/31hiAtjwQZL.jpg",
+    brand: "CleanPaws",
+    features: ["Odor Control", "Easy Access Door", "Carbon Filter", "Easy to Clean"]
   },
   {
     id: 204,
-    name: "ASUS ROG Gaming Monitor",
-    category: "Monitors",
+    name: "Complete Dog Grooming Kit",
+    category: "Grooming",
     reviews: 132,
-    price: 899.99,
-    discountedPrice: 749.99,
-    image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "ASUS",
-    features: ["32-inch", "4K UHD", "144Hz", "1ms Response"]
+    price: 79.99,
+    discountedPrice: 59.99,
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "GroomPro",
+    features: ["Professional Clippers", "Multiple Attachments", "Nail Trimmer", "Carrying Case"]
   }
 ];
 
-const TrendingProducts = [
+const TrendingPetProducts = [
   {
     id: 301,
-    name: "Samsung Galaxy S23 Ultra",
-    category: "Smartphones",
+    name: "GPS Pet Tracker Collar Attachment",
+    category: "Tech Accessories",
     reviews: 356,
-    price: 1199.99,
-    discountedPrice: 1099.99,
-    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Samsung",
-    features: ["200MP Camera", "Snapdragon 8 Gen 2", "5000mAh Battery", "S-Pen"]
+    price: 89.99,
+    discountedPrice: 79.99,
+    image: "https://images.unsplash.com/photo-1566677914817-56426959ae9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "PetTracker",
+    features: ["Real-time Tracking", "Geofencing", "Activity Monitoring", "Waterproof"]
   },
   {
     id: 302,
-    name: "iPad Pro 12.9\" M2",
-    category: "Tablets",
+    name: "Automatic Laser Cat Toy",
+    category: "Toys",
     reviews: 213,
-    price: 1099.99,
-    discountedPrice: 999.99,
-    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Apple",
-    features: ["M2 Chip", "12.9-inch XDR Display", "ProMotion", "Apple Pencil Support"]
+    price: 39.99,
+    discountedPrice: 29.99,
+    image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "PawPlay",
+    features: ["Random Patterns", "Adjustable Speed", "Timer Function", "Battery Operated"]
   },
   {
     id: 303,
-    name: "DJI Mavic 3 Pro Drone",
-    category: "Drones",
-    reviews: 98,
-    price: 1599.99,
-    discountedPrice: 1499.99,
-    image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "DJI",
-    features: ["4/3 CMOS Sensor", "46 Min Flight Time", "15km Video Transmission", "4K/120fps"]
+    name: "Calming Dog Anxiety Jacket",
+    category: "Anxiety Relief",
+    reviews: 178,
+    price: 49.99,
+    discountedPrice: 39.99,
+    image: "https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    brand: "ComfortPets",
+    features: ["Gentle Pressure", "Soft Material", "Adjustable Fit", "Machine Washable"]
   },
   {
     id: 304,
-    name: "Dyson V15 Detect Vacuum",
-    category: "Home Appliances",
+    name: "Self-Cleaning Litter Box",
+    category: "Litter Boxes",
     reviews: 189,
-    price: 749.99,
-    discountedPrice: 649.99,
-    image: "https://images.unsplash.com/photo-1558317374-067fb5f30001?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    brand: "Dyson",
-    features: ["Laser Dust Detection", "60-min Runtime", "LCD Screen", "HEPA Filtration"]
+    price: 199.99,
+    discountedPrice: 179.99,
+    image: "https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2022/09/Litter-Robot-3.jpg",
+    brand: "CleanPaws",
+    features: ["Automatic Cleaning", "Odor Control", "Waste Separator", "Low Maintenance"]
   }
 ];
 
-const ElectronicsCategories = [
+const PetCategories = [
   {
     id: 1,
-    title: "TVs",
-    icon: "bi-tv",
-    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    link: "/electronics/tvs"
+    title: "Dogs",
+    icon: "bi-heart",
+    image: "https://images.unsplash.com/photo-1529429617124-95b109e86bb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    link: "/pet-supplies/dogs"
   },
   {
     id: 2,
-    title: "Laptops",
-    icon: "bi-laptop",
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    link: "/electronics/laptops"
+    title: "Cats",
+    icon: "bi-heart",
+    image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    link: "/pet-supplies/cats"
   },
   {
     id: 3,
-    title: "Audio",
-    icon: "bi-headphones",
-    image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    link: "/electronics/audio"
+    title: "Food",
+    icon: "bi-egg-fried",
+    image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    link: "/pet-supplies/food"
   },
   {
     id: 4,
-    title: "Smart Home",
-    icon: "bi-house-door",
-    image: "https://i.pcmag.com/imagery/articles/06wLZC8lRWWcZnYbR2XQnKn-45.jpg",
-    link: "/electronics/smart-home"
+    title: "Toys",
+    icon: "bi-controller",
+    image: "https://m.media-amazon.com/images/I/A1POvcLTSHL.jpg",
+    link: "/pet-supplies/toys"
   },
   {
     id: 5,
-    title: "Cameras",
-    icon: "bi-camera",
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    link: "/electronics/cameras"
+    title: "Beds",
+    icon: "bi-moon",
+    image: "https://images.unsplash.com/photo-1541599468348-e96984315921?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    link: "/pet-supplies/beds"
   },
   {
     id: 6,
-    title: "Gaming",
-    icon: "bi-controller",
-    image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    link: "/electronics/gaming"
+    title: "Grooming",
+    icon: "bi-scissors",
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    link: "/pet-supplies/grooming"
   },
   {
     id: 7,
-    title: "Smartphones",
-    icon: "bi-phone",
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-    link: "/electronics/smartphones"
+    title: "Travel",
+    icon: "bi-car-front",
+    image: "https://images.unsplash.com/photo-1585071550721-fdb362ae2b8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    link: "/pet-supplies/travel"
   },
   {
     id: 8,
-    title: "Accessories",
-    icon: "bi-headset",
-    image: "https://c.pxhere.com/images/dd/fb/32f6e4c9eff8c290ca3466946ce7-1595236.jpg!d",
-    link: "/electronics/accessories"
+    title: "Health",
+    icon: "bi-heart-pulse",
+    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
+    link: "/pet-supplies/health"
   }
 ];
 
-const Electronics = () => {
+const PetSupplies = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [isCartAnimating, setIsCartAnimating] = useState(false);
   const [cartAnimatingProduct, setCartAnimatingProduct] = useState(null);
   
-  const handleProductClick = (product: any) => {
+  const handleProductClick = (product:any) => {
     // Create a URL-friendly version of the product name
     const productSlug = product.name
       .toLowerCase()
@@ -242,16 +242,16 @@ const Electronics = () => {
     navigate(`/product/${productSlug}`, { 
       state: { 
         product,
-        category: 'electronics'
+        category: 'pet-supplies'
       } 
     });
   };
 
-  const navigateToCategory = (category: string) => {
+  const navigateToCategory = (category:string) => {
     navigate(category);
   };
 
-  const handleAddToCart = (e: any, product: any) => {
+  const handleAddToCart = (e:any, product:any) => {
     e.stopPropagation();
     
     // Add to cart
@@ -275,27 +275,27 @@ const Electronics = () => {
   };
 
   return (
-    <div className="electronics-page">
+    <div className="pet-supplies-page">
       {/* Hero Banner */}
       <div className="hero-banner">
         <div className="hero-overlay"></div>
         <img 
-          src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-          alt="Electronics Banner"
+          src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+          alt="Pet Supplies Banner"
           className="hero-image"
         />
         <div className="banner-content">
           <div className="banner-text">
-            <h1>Electronics</h1>
-            <h2>The latest in tech at unbeatable prices</h2>
+            <h1>Pet Supplies</h1>
+            <h2>Everything your furry friends deserve</h2>
             
-            <div className="promo-badge">Limited Time Offer</div>
+            <div className="promo-badge">Special Offer</div>
             
             <div className="offer-banner">
-              <h3>Save up to $500</h3>
-              <p>on select TVs, laptops, and smart home devices</p>
+              <h3>Up to 30% Off</h3>
+              <p>on premium pet food, toys, and accessories</p>
               <div className="button-container">
-                <button className="shop-now-btn" onClick={() => navigate('/electronics/deals')}>
+                <button className="shop-now-btn" onClick={() => navigate('/pet-supplies/deals')}>
                   Shop Deals Now
                   <i className="bi bi-arrow-right"></i>
                 </button>
@@ -309,7 +309,7 @@ const Electronics = () => {
       <div className="container">
         <h2 className="section-title">Browse Categories</h2>
         <div className="category-circles">
-          {ElectronicsCategories.map((category) => (
+          {PetCategories.map((category) => (
             <div 
               key={category.id} 
               className="category-circle"
@@ -333,14 +333,14 @@ const Electronics = () => {
           <div className="deals-content">
             <div className="deals-badge">Hot Deals</div>
             <h2>Limited Time Offers</h2>
-            <p>Save big on these top electronics. Hurry, offers end soon!</p>
-            <button className="view-all-btn" onClick={() => navigate('/electronics/deals')}>
+            <p>Save big on premium pet supplies. Hurry, offers end soon!</p>
+            <button className="view-all-btn" onClick={() => navigate('/pet-supplies/deals')}>
               View All Deals
               <i className="bi bi-arrow-right"></i>
             </button>
           </div>
           <div className="deals-image">
-            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Electronics Deals" />
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pet Deals" />
           </div>
         </div>
       </div>
@@ -349,14 +349,14 @@ const Electronics = () => {
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">Special Deals</h2>
-          <button className="view-all-products" onClick={() => navigate('/electronics/special-offers')}>
+          <button className="view-all-products" onClick={() => navigate('/pet-supplies/special-offers')}>
             View All
             <i className="bi bi-arrow-right"></i>
           </button>
         </div>
         
         <div className="products-grid">
-          {ElectronicsDeals.map((product) => (
+          {PetDeals.map((product) => (
             <div 
               key={product.id} 
               className="product-card"
@@ -432,15 +432,15 @@ const Electronics = () => {
       {/* Featured Products */}
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Featured Electronics</h2>
-          <button className="view-all-products" onClick={() => navigate('/electronics/all')}>
+          <h2 className="section-title">Featured Pet Supplies</h2>
+          <button className="view-all-products" onClick={() => navigate('/pet-supplies/all')}>
             View All
             <i className="bi bi-arrow-right"></i>
           </button>
         </div>
         
         <div className="products-grid">
-          {ElectronicsProducts.map((product) => (
+          {PetSuppliesProducts.map((product) => (
             <div 
               key={product.id} 
               className="product-card"
@@ -526,9 +526,9 @@ const Electronics = () => {
         <div className="trending-banner">
           <div className="trending-content">
             <div className="trending-badge">Trending Now</div>
-            <h2>Tech That's Making Waves</h2>
-            <p>Discover the most popular electronics everyone's talking about in 2025.</p>
-            <button className="trending-btn" onClick={() => navigate('/electronics/trending')}>
+            <h2>Pet Care Innovations</h2>
+            <p>Discover cutting-edge products to make pet care easier and more enjoyable.</p>
+            <button className="trending-btn" onClick={() => navigate('/pet-supplies/trending')}>
               Explore Trending
               <i className="bi bi-arrow-right"></i>
             </button>
@@ -540,14 +540,14 @@ const Electronics = () => {
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">Trending Now</h2>
-          <button className="view-all-products" onClick={() => navigate('/electronics/trending')}>
+          <button className="view-all-products" onClick={() => navigate('/pet-supplies/trending')}>
             View All
             <i className="bi bi-arrow-right"></i>
           </button>
         </div>
         
         <div className="products-grid trending-grid">
-          {TrendingProducts.map((product) => (
+          {TrendingPetProducts.map((product) => (
             <div 
               key={product.id} 
               className="product-card trending-card"
@@ -637,8 +637,8 @@ const Electronics = () => {
         <div className="container">
           <div className="newsletter-container">
             <div className="newsletter-content">
-              <h2>Stay Updated on Latest Tech</h2>
-              <p>Subscribe to our newsletter for exclusive deals, new product announcements, and tech tips.</p>
+              <h2>Get Pet Care Tips & Exclusive Offers</h2>
+              <p>Subscribe to our newsletter for pet care advice, new product announcements, and exclusive deals.</p>
               <div className="newsletter-form">
                 <input type="email" placeholder="Enter your email address" />
                 <button>Subscribe <i className="bi bi-send"></i></button>
@@ -648,27 +648,27 @@ const Electronics = () => {
         </div>
       </div>
 
-      {/* Tech Brands */}
+      {/* Pet Brands */}
       <div className="container">
-        <h2 className="section-title">Top Tech Brands</h2>
+        <h2 className="section-title">Top Pet Brands</h2>
         <div className="brands-container">
           <div className="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Purina_logo.svg" alt="Purina" />
           </div>
           <div className="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Royal_Canin_logo.svg" alt="Royal Canin" />
           </div>
           <div className="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg" alt="Sony" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Hill%27s_Pet_Nutrition_logo.svg" alt="Hill's" />
           </div>
           <div className="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/LG_logo_%282014%29.svg" alt="LG" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Pedigree_dog_food_logo.svg" alt="Pedigree" />
           </div>
           <div className="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Friskies_logo.svg" alt="Friskies" />
           </div>
           <div className="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Kong_Company_logo.svg" alt="Kong" />
           </div>
         </div>
       </div>
@@ -676,4 +676,4 @@ const Electronics = () => {
   );
 };
 
-export default Electronics;
+export default PetSupplies;
